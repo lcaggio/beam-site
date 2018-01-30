@@ -87,7 +87,7 @@ And adding the mainClass name in the maven jar plugin:
       <manifest>
         <addClasspath>true</addClasspath>
         <classpathPrefix>lib/</classpathPrefix>
-        <mainClass>org.apache.beam.examples.WordCount</mainClass>
+        <mainClass>YOUR_MAIN_CLASS_NAME</mainClass>
       </manifest>
     </archive>
   </configuration>
