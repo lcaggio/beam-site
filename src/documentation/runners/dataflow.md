@@ -64,6 +64,48 @@ For more information, see the *Before you begin* section of the [Cloud Dataflow 
 
 <span class="language-py">This section is not applicable to the Beam SDK for Python.</span>
 
+### Self executing jar
+
+In some cases, such as starting a pipeline using a scheduler such as AirFlow, your (self-contained) application would be required. You can pack a self-executing jar by explicitly adding the following dependencies in your pom.xml:
+```java
+<dependency>
+    <groupId>org.apache.beam</groupId>
+    <artifactId>beam-runners-google-cloud-dataflow-java</artifactId>
+    <version>${beam.version}</version>
+    <scope>runtime</scope>
+</dependency>
+```
+
+And adding the mainClass name in the maven jar plugin:
+```java
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-jar-plugin</artifactId>
+  <version>${maven-jar-plugin.version}</version>
+  <configuration>
+    <archive>
+      <manifest>
+        <addClasspath>true</addClasspath>
+        <classpathPrefix>lib/</classpathPrefix>
+        <mainClass>org.apache.beam.examples.WordCount</mainClass>
+      </manifest>
+    </archive>
+  </configuration>
+</plugin>
+```
+
+After running <code>mvn package</code>, run <code>ls target</code> and you should see (assuming your artifactId is `beam-examples` and the version is 1.0.0):
+```
+beam-examples-bundled-1.0.0.jar
+```
+To run the self-executing jar on Dataflow simply run:
+```
+java -jar target/beam-examples-bundled-1.0.0.jar \
+  --runner=DataflowRunner \
+  --project=<YOUR_GCP_PROJECT_ID> \
+  --tempLocation=gs://<YOUR_GCS_BUCKET>/temp/
+```
+
 ### Authentication
 
 Before running your pipeline, you must authenticate with the Google Cloud Platform. Run the following command to get [Application Default Credentials](https://developers.google.com/identity/protocols/application-default-credentials).
