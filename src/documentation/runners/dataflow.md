@@ -66,7 +66,8 @@ For more information, see the *Before you begin* section of the [Cloud Dataflow 
 
 ### Self executing jar
 
-In some cases, such as starting a pipeline using a scheduler such as AirFlow, your (self-contained) application would be required. You can pack a self-executing jar by explicitly adding the following dependencies in your pom.xml:
+{:.language-java}
+In some cases, such as starting a pipeline using a scheduler such as [Apache AirFlow](https://airflow.apache.org), your (self-contained) application would be required. You can pack a self-executing jar by explicitly adding the following dependencies on the Project section of your pom.xml (this is in addiction to the dependency already added in the Cloud Dataflow Runner section):
 ```java
 <dependency>
     <groupId>org.apache.beam</groupId>
@@ -98,13 +99,15 @@ After running <code>mvn package</code>, run <code>ls target</code> and you shoul
 ```
 beam-examples-bundled-1.0.0.jar
 ```
-To run the self-executing jar on Dataflow simply run:
+To run the self-executing jar on Cloud Dataflow simply run:
 ```
 java -jar target/beam-examples-bundled-1.0.0.jar \
   --runner=DataflowRunner \
   --project=<YOUR_GCP_PROJECT_ID> \
   --tempLocation=gs://<YOUR_GCS_BUCKET>/temp/
 ```
+{:.language-py}
+This section is not applicable to the Beam SDK for Python.
 
 ### Authentication
 
