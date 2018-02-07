@@ -77,6 +77,7 @@ In some cases, such as starting a pipeline using a scheduler such as [Apache Air
 </dependency>
 ```
 
+{:.language-java}
 And adding the mainClass name in the maven jar plugin:
 ```java
 <plugin>
@@ -95,12 +96,15 @@ And adding the mainClass name in the maven jar plugin:
 </plugin>
 ```
 
+{:.language-java}
 After running <code>mvn package</code>, run <code>ls target</code> and you should see (assuming your artifactId is `beam-examples` and the version is 1.0.0):
 ```
 beam-examples-bundled-1.0.0.jar
 ```
+
+{:.language-java}
 To run the self-executing jar on Cloud Dataflow simply run:
-```
+```java
 java -jar target/beam-examples-bundled-1.0.0.jar \
   --runner=DataflowRunner \
   --project=<YOUR_GCP_PROJECT_ID> \
