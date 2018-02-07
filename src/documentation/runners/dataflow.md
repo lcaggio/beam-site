@@ -68,6 +68,10 @@ For more information, see the *Before you begin* section of the [Cloud Dataflow 
 
 {:.language-java}
 In some cases, such as starting a pipeline using a scheduler such as [Apache AirFlow](https://airflow.apache.org), your (self-contained) application would be required. You can pack a self-executing jar by explicitly adding the following dependencies on the Project section of your pom.xml (this is in addiction to the dependency already added in the Cloud Dataflow Runner section):
+
+{:.language-py}
+This section is not applicable to the Beam SDK for Python.
+
 ```java
 <dependency>
     <groupId>org.apache.beam</groupId>
@@ -76,15 +80,16 @@ In some cases, such as starting a pipeline using a scheduler such as [Apache Air
     <scope>runtime</scope>
 </dependency>
 ```
-
-{:.language-py}
-This section is not applicable to the Beam SDK for Python.
 ```py
 # This section is not applicable to the Beam SDK for Python.
 ```
 
 {:.language-java}
 And adding the mainClass name in the maven jar plugin:
+
+{:.language-py}
+This section is not applicable to the Beam SDK for Python.
+
 ```java
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
@@ -101,36 +106,35 @@ And adding the mainClass name in the maven jar plugin:
   </configuration>
 </plugin>
 ```
-
-{:.language-py}
-This section is not applicable to the Beam SDK for Python.
 ```py
 # This section is not applicable to the Beam SDK for Python.
 ```
 
 {:.language-java}
 After running <code>mvn package</code>, run <code>ls target</code> and you should see (assuming your artifactId is `beam-examples` and the version is 1.0.0):
-```java
-beam-examples-bundled-1.0.0.jar
-```
 
 {:.language-py}
 This section is not applicable to the Beam SDK for Python.
+
+```java
+beam-examples-bundled-1.0.0.jar
+```
 ```py
 # This section is not applicable to the Beam SDK for Python.
 ```
 
 {:.language-java}
 To run the self-executing jar on Cloud Dataflow simply run:
+
+{:.language-py}
+This section is not applicable to the Beam SDK for Python.
+
 ```java
 java -jar target/beam-examples-bundled-1.0.0.jar \
   --runner=DataflowRunner \
   --project=<YOUR_GCP_PROJECT_ID> \
   --tempLocation=gs://<YOUR_GCS_BUCKET>/temp/
 ```
-
-{:.language-py}
-This section is not applicable to the Beam SDK for Python.
 ```py
 # This section is not applicable to the Beam SDK for Python.
 ```
