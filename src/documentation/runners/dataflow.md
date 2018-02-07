@@ -77,6 +77,12 @@ In some cases, such as starting a pipeline using a scheduler such as [Apache Air
 </dependency>
 ```
 
+{:.language-py}
+This section is not applicable to the Beam SDK for Python.
+```py
+# This section is not applicable to the Beam SDK for Python.
+```
+
 {:.language-java}
 And adding the mainClass name in the maven jar plugin:
 ```java
@@ -96,10 +102,22 @@ And adding the mainClass name in the maven jar plugin:
 </plugin>
 ```
 
+{:.language-py}
+This section is not applicable to the Beam SDK for Python.
+```py
+# This section is not applicable to the Beam SDK for Python.
+```
+
 {:.language-java}
 After running <code>mvn package</code>, run <code>ls target</code> and you should see (assuming your artifactId is `beam-examples` and the version is 1.0.0):
-```
+```java
 beam-examples-bundled-1.0.0.jar
+```
+
+{:.language-py}
+This section is not applicable to the Beam SDK for Python.
+```py
+# This section is not applicable to the Beam SDK for Python.
 ```
 
 {:.language-java}
@@ -110,8 +128,12 @@ java -jar target/beam-examples-bundled-1.0.0.jar \
   --project=<YOUR_GCP_PROJECT_ID> \
   --tempLocation=gs://<YOUR_GCS_BUCKET>/temp/
 ```
+
 {:.language-py}
 This section is not applicable to the Beam SDK for Python.
+```py
+# This section is not applicable to the Beam SDK for Python.
+```
 
 ### Authentication
 
