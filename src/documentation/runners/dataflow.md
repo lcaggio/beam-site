@@ -64,13 +64,13 @@ For more information, see the *Before you begin* section of the [Cloud Dataflow 
 
 <span class="language-py">This section is not applicable to the Beam SDK for Python.</span>
 
-### Self executing jar
-
-{:.language-java}
-In some cases, such as starting a pipeline using a scheduler such as [Apache AirFlow](https://airflow.apache.org), your (self-contained) application would be required. You can pack a self-executing jar by explicitly adding the following dependencies on the Project section of your pom.xml (this is in addiction to the dependency already added in the Cloud Dataflow Runner section):
+### Self executing JAR
 
 {:.language-py}
 This section is not applicable to the Beam SDK for Python.
+
+{:.language-java}
+In some cases, such as starting a pipeline using a scheduler such as [Apache AirFlow](https://airflow.apache.org), you must have a self-contained application. You can pack a self-executing JAR by explicitly adding the following dependency on the Project section of your pom.xml, in addition to the adding existing dependency shown in the previous section.
 
 ```java
 <dependency>
@@ -80,15 +80,9 @@ This section is not applicable to the Beam SDK for Python.
     <scope>runtime</scope>
 </dependency>
 ```
-```py
-# This section is not applicable to the Beam SDK for Python.
-```
 
 {:.language-java}
-And adding the mainClass name in the maven jar plugin:
-
-{:.language-py}
-This section is not applicable to the Beam SDK for Python.
+Then, add the mainClass name in the Maven JAR plugin.
 
 ```java
 <plugin>
@@ -106,37 +100,22 @@ This section is not applicable to the Beam SDK for Python.
   </configuration>
 </plugin>
 ```
-```py
-# This section is not applicable to the Beam SDK for Python.
-```
 
 {:.language-java}
-After running <code>mvn package</code>, run <code>ls target</code> and you should see (assuming your artifactId is `beam-examples` and the version is 1.0.0):
-
-{:.language-py}
-This section is not applicable to the Beam SDK for Python.
+After running <code>mvn package</code>, run <code>ls target</code> and you should see (assuming your artifactId is `beam-examples` and the version is 1.0.0) the following output.
 
 ```java
 beam-examples-bundled-1.0.0.jar
 ```
-```py
-# This section is not applicable to the Beam SDK for Python.
-```
 
 {:.language-java}
-To run the self-executing jar on Cloud Dataflow simply run:
-
-{:.language-py}
-This section is not applicable to the Beam SDK for Python.
+To run the self-executing JAR on Cloud Dataflow, use the following command.
 
 ```java
 java -jar target/beam-examples-bundled-1.0.0.jar \
   --runner=DataflowRunner \
   --project=<YOUR_GCP_PROJECT_ID> \
   --tempLocation=gs://<YOUR_GCS_BUCKET>/temp/
-```
-```py
-# This section is not applicable to the Beam SDK for Python.
 ```
 
 ### Authentication
